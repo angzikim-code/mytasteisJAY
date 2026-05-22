@@ -22,22 +22,21 @@
     <meta name="twitter:image" content="https://angzikim-code.github.io/mytasteisJAY/IMG_8609.JPG">
 
     <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-database-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
     <script>
+        // ⭕ 네 스크린샷 기반 진짜 파이어베이스 설정값
         const firebaseConfig = {
             apiKey: "AIzaSyAsu5WtK7hLjKkmsaZ1ccrseT_a956T1O8",
             authDomain: "jay-archive.firebaseapp.com",
-            // ⚠️ 만약 계속 저장 실패가 뜨면 이 아래 주소를 내 파이어베이스 콘솔에 적힌 주소로 똑같이 고쳐야 해!
-            databaseURL: "https://jay-archive-default-rtdb.firebaseio.com", 
             projectId: "jay-archive",
             storageBucket: "jay-archive.firebasestorage.app",
             messagingSenderId: "357568229527",
             appId: "1:357568229527:web:08ff8e6c877bd50fbcf9d2"
         };
         
-        // 파이어베이스 초기화
+        // 파이어베이스 및 파이어스토어(db) 초기화 (주소창 복사가 필요 없음!)
         firebase.initializeApp(firebaseConfig);
-        const database = firebase.database();
+        const db = firebase.firestore();
     </script>
 </head>
 <body class="bg-white text-neutral-950 min-h-screen flex flex-col justify-between antialiased relative">
@@ -144,9 +143,6 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // 🚨 [진단 1] 최신 코드가 실행되는지 확인하는 알림창
-            alert("🟢 [진단 1] 최신 방명록 코드가 정상적으로 로드되었습니다!");
-
             const commentForm = document.getElementById('commentForm');
             const commentsList = document.getElementById('commentsList');
             const splash = document.getElementById('splash-screen');
@@ -163,24 +159,20 @@
             setTimeout(() => { if(splash) splash.classList.add('opacity-0'); }, 2000);
             setTimeout(() => { if(splash) splash.remove(); }, 3000);
 
-            // 실시간 파이어베이스 데이터베이스 연동 및 갱신
-            if (typeof database !== 'undefined' && commentsList) {
-                database.ref('comments').on('value', (snapshot) => {
+            // 🌟 파이어스토어 실시간 데이터 갱신 감지 🌟
+            if (typeof db !== 'undefined' && commentsList) {
+                db.collection('comments').orderBy('id', 'desc').onSnapshot((snapshot) => {
                     commentsList.innerHTML = '';
-                    const data = snapshot.val();
                     
-                    if (!data) {
+                    if (snapshot.empty) {
                         commentsList.innerHTML = `<p class="text-center text-neutral-400 text-xs py-8">첫 번째 메시지를 남겨보세요.</p>`;
                         return;
                     }
 
-                    const commentsArray = [];
-                    Object.keys(data).forEach(key => {
-                        commentsArray.push({ fbKey: key, ...data[key] });
-                    });
-                    commentsArray.sort((a, b) => b.id - a.id);
-
-                    commentsArray.forEach(c => {
+                    snapshot.forEach((doc) => {
+                        const c = doc.data();
+                        const fbKey = doc.id; // 파이어스토어 고유 문서 ID
+                        
                         const commentDiv = document.createElement('div');
                         commentDiv.className = 'bg-white p-4 rounded-none border border-neutral-200 flex justify-between items-start gap-4';
                         commentDiv.innerHTML = `
@@ -191,26 +183,32 @@
                                 </div>
                                 <p class="text-xs text-neutral-700 whitespace-pre-wrap">${escapeHtml(c.text)}</p>
                             </div>
-                            <button data-key="${c.fbKey}" class="delete-btn text-neutral-400 hover:text-red-500 text-[10px] p-1 transition">삭제</button>
+                            <button data-key="${fbKey}" class="delete-btn text-neutral-400 hover:text-red-500 text-[10px] p-1 transition">삭제</button>
                         `;
                         commentsList.appendChild(commentDiv);
                     });
 
+                    // 삭제 버튼 클릭 이벤트 연결
                     document.querySelectorAll('.delete-btn').forEach(btn => {
                         btn.addEventListener('click', function() {
-                            deleteComment(this.getAttribute('data-key'), data[this.getAttribute('data-key')].password);
+                            const key = this.getAttribute('data-key');
+                            const targetDoc = snapshot.docs.find(d => d.id === key);
+                            if (targetDoc) {
+                                deleteComment(key, targetDoc.data().password);
+                            }
                         });
                     });
+                }, (error) => {
+                    if (error.code === 'permission-denied') {
+                        alert("⚠️ 파이어베이스 규칙(Rules) 잠금을 해제해야 합니다! 1단계를 다시 확인해 주세요.");
+                    }
                 });
             }
 
-            // 댓글 등록 버튼 클릭 시 서버로 전송
+            // 댓글 등록 버튼 클릭 시 파이어스토어 서버로 전송
             if (commentForm) {
                 commentForm.addEventListener('submit', function(e) {
                     e.preventDefault();
-                    
-                    // 🚨 [진단 2] 버튼 클릭이 인지되는지 확인하는 알림창
-                    alert("🔵 [진단 2] 등록 버튼 클릭 확인! 서버로 전송을 시작합니다.");
                     
                     const nickname = document.getElementById('nickname').value;
                     const password = document.getElementById('password').value;
@@ -219,24 +217,20 @@
 
                     const newComment = { id: Date.now(), nickname, password, text, date };
                     
-                    database.ref('comments').push(newComment)
+                    // 파이어스토어 'comments' 컬렉션에 데이터 추가
+                    db.collection('comments').add(newComment)
                         .then(() => {
-                            // 🚨 [진단 3] 최종 성공 알림창
-                            alert("✨ [진단 3] 서버 저장 성공! 방명록이 등록되었습니다.");
                             commentForm.reset();
                         })
-                        .catch(err => {
-                            // 🚨 [진단 4] 실패 시 원인 출력 알림창
-                            alert("❌ [진단 4] 서버 저장 실패! 에러 이유: " + err.message);
-                        });
+                        .catch(err => alert("서버 저장 실패: " + err.message));
                 });
             }
 
-            // 서버에서 삭제 기능
+            // 파이어스토어 서버에서 데이터 삭제 기능
             function deleteComment(fbKey, serverPassword) {
                 const inputPassword = prompt("비밀번호를 입력하세요:");
                 if (inputPassword === serverPassword) {
-                    database.ref('comments/' + fbKey).remove()
+                    db.collection('comments').doc(fbKey).delete()
                         .catch(err => alert("삭제 실패: " + err.message));
                 } else if (inputPassword != null) {
                     alert("비밀번호가 일치하지 않습니다.");
