@@ -6,10 +6,8 @@
     <title>JAY ARCHIVE</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* Montserrat 및 한글 폰트 임포트 */
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,900;1,900&display=swap');
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap');
-        
         body { font-family: 'Noto Sans KR', sans-serif; }
         .font-montserrat { font-family: 'Montserrat', sans-serif; font-weight: 900; }
     </style>
@@ -18,11 +16,44 @@
     <meta property="og:title" content="JAY ARCHIVE">
     <meta property="og:description" content="my one and only wish is to perform in front of lots of engenes">
     <meta property="og:image" content="https://angzikim-code.github.io/mytasteisJAY/IMG_8609.JPG">
-
     <meta name="twitter:card" content="summary_large_image"> 
     <meta name="twitter:title" content="JAY ARCHIVE">
     <meta name="twitter:description" content="my one and only wish is to perform in front of lots of engenes">
     <meta name="twitter:image" content="https://angzikim-code.github.io/mytasteisJAY/IMG_8609.JPG">
+
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-database-compat.js"></script>
+    <script>
+        // // Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyAsu5WtK7hLjKkmsaZ1ccrseT_a956T1O8",
+  authDomain: "jay-archive.firebaseapp.com",
+  projectId: "jay-archive",
+  storageBucket: "jay-archive.firebasestorage.app",
+  messagingSenderId: "357568229527",
+  appId: "1:357568229527:web:08ff8e6c877bd50fbcf9d2"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+        const firebaseConfig = {
+            apiKey: "YOUR_API_KEY",
+            authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+            databaseURL: "https://YOUR_PROJECT_ID-default-rtdb.firebaseio.com",
+            projectId: "YOUR_PROJECT_ID",
+            storageBucket: "YOUR_PROJECT_ID.appspot.com",
+            messagingSenderId: "YOUR_SENDER_ID",
+            appId: "YOUR_APP_ID"
+        };
+        // 파이어베이스 초기화
+        firebase.initializeApp(firebaseConfig);
+        const database = firebase.database();
+    </script>
 </head>
 <body class="bg-white text-neutral-950 min-h-screen flex flex-col justify-between antialiased relative">
 
@@ -49,129 +80,63 @@
 
         <section id="covers" class="mb-24 scroll-mt-20">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                
                 <div class="bg-white rounded-none border border-neutral-200 overflow-hidden group hover:border-neutral-950 transition duration-200">
-                    <div class="relative aspect-video">
-                        <iframe class="w-full h-full" src="https://www.youtube.com/embed/v6jLJtIl_HM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                    </div>
-                    <div class="p-5">
-                        <h4 class="font-bold text-base mb-1 text-neutral-900">Dry Flower</h4>
-                        <p class="text-xs text-neutral-400">원곡자: Yuuri | Collaboration Cover</p>
-                    </div>
+                    <div class="relative aspect-video"><iframe class="w-full h-full" src="https://www.youtube.com/embed/v6jLJtIl_HM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+                    <div class="p-5"><h4 class="font-bold text-base mb-1 text-neutral-900">Dry Flower</h4><p class="text-xs text-neutral-400">원곡자: Yuuri | Collaboration Cover</p></div>
                 </div>
-
                 <div class="bg-white rounded-none border border-neutral-200 overflow-hidden group hover:border-neutral-950 transition duration-200">
-                    <div class="relative aspect-video">
-                        <iframe class="w-full h-full" src="https://www.youtube.com/embed/l6v9da8YT0w" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                    </div>
-                    <div class="p-5">
-                        <h4 class="font-bold text-base mb-1 text-neutral-900">Bruises</h4>
-                        <p class="text-xs text-neutral-400">원곡자: Lewis Capaldi</p>
-                    </div>
+                    <div class="relative aspect-video"><iframe class="w-full h-full" src="https://www.youtube.com/embed/l6v9da8YT0w" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+                    <div class="p-5"><h4 class="font-bold text-base mb-1 text-neutral-900">Bruises</h4><p class="text-xs text-neutral-400">원곡자: Lewis Capaldi</p></div>
                 </div>
-
                 <div class="bg-white rounded-none border border-neutral-200 overflow-hidden group hover:border-neutral-950 transition duration-200">
-                    <div class="relative aspect-video">
-                        <iframe class="w-full h-full" src="https://www.youtube.com/embed/UktnKg6mif0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                    </div>
-                    <div class="p-5">
-                        <h4 class="font-bold text-base mb-1 text-neutral-900">初恋 (First Love)</h4>
-                        <p class="text-xs text-neutral-400">원곡자: 回春丹</p>
-                    </div>
+                    <div class="relative aspect-video"><iframe class="w-full h-full" src="https://www.youtube.com/embed/UktnKg6mif0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+                    <div class="p-5"><h4 class="font-bold text-base mb-1 text-neutral-900">初恋 (First Love)</h4><p class="text-xs text-neutral-400">원곡자: 回春丹</p></div>
                 </div>
-
                 <div class="bg-white rounded-none border border-neutral-200 overflow-hidden group hover:border-neutral-950 transition duration-200">
-                    <div class="relative aspect-video">
-                        <iframe class="w-full h-full" src="https://www.youtube.com/embed/lO7VWqq3pDs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                    </div>
-                    <div class="p-5">
-                        <h4 class="font-bold text-base mb-1 text-neutral-900">Magnetic</h4>
-                        <p class="text-xs text-neutral-400">원곡자: ILLIT | 기타커버</p>
-                    </div>
+                    <div class="relative aspect-video"><iframe class="w-full h-full" src="https://www.youtube.com/embed/lO7VWqq3pDs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+                    <div class="p-5"><h4 class="font-bold text-base mb-1 text-neutral-900">Magnetic</h4><p class="text-xs text-neutral-400">원곡자: ILLIT | 기타커버</p></div>
                 </div>
-
                 <div class="bg-white rounded-none border border-neutral-200 overflow-hidden group hover:border-neutral-950 transition duration-200">
-                    <div class="relative aspect-video">
-                        <iframe class="w-full h-full" src="https://www.youtube.com/embed/1dwC7_t1hGg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                    </div>
-                    <div class="p-5">
-                        <h4 class="font-bold text-base mb-1 text-neutral-900">MAESTRO</h4>
-                        <p class="text-xs text-neutral-400">원곡자: SEVENTEEN | 기타커버</p>
-                    </div>
+                    <div class="relative aspect-video"><iframe class="w-full h-full" src="https://www.youtube.com/embed/1dwC7_t1hGg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+                    <div class="p-5"><h4 class="font-bold text-base mb-1 text-neutral-900">MAESTRO</h4><p class="text-xs text-neutral-400">원곡자: SEVENTEEN | 기타커버</p></div>
                 </div>
-
                 <div class="bg-white rounded-none border border-neutral-200 overflow-hidden group hover:border-neutral-950 transition duration-200">
-                    <div class="relative aspect-video">
-                        <iframe class="w-full h-full" src="https://www.youtube.com/embed/Un4Q_9MWPfc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                    </div>
-                    <div class="p-5">
-                        <h4 class="font-bold text-base mb-1 text-neutral-900">XO</h4>
-                        <p class="text-xs text-neutral-400">원곡자: ENHYPEN | 기타커버</p>
-                    </div>
+                    <div class="relative aspect-video"><iframe class="w-full h-full" src="https://www.youtube.com/embed/Un4Q_9MWPfc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+                    <div class="p-5"><h4 class="font-bold text-base mb-1 text-neutral-900">XO</h4><p class="text-xs text-neutral-400">원곡자: ENHYPEN | 기타커버</p></div>
                 </div>
-
                 <div class="bg-white rounded-none border border-neutral-200 overflow-hidden group hover:border-neutral-950 transition duration-200">
-                    <div class="relative aspect-video">
-                        <iframe class="w-full h-full" src="https://www.youtube.com/embed/E_2504O1Ywk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                    </div>
-                    <div class="p-5">
-                        <h4 class="font-bold text-base mb-1 text-neutral-900">HONEY</h4>
-                        <p class="text-xs text-neutral-400">원곡자: L'Arc-en-Ciel | 'FATE PLUS' IN JAPAN</p>
-                    </div>
+                    <div class="relative aspect-video"><iframe class="w-full h-full" src="https://www.youtube.com/embed/E_2504O1Ywk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+                    <div class="p-5"><h4 class="font-bold text-base mb-1 text-neutral-900">HONEY</h4><p class="text-xs text-neutral-400">원곡자: L'Arc-en-Ciel | 'FATE PLUS' IN JAPAN</p></div>
                 </div>
-
                 <div class="bg-white rounded-none border border-neutral-200 overflow-hidden group hover:border-neutral-950 transition duration-200">
-                    <div class="relative aspect-video">
-                        <iframe class="w-full h-full" src="https://www.youtube.com/embed/62qfQJabN8g" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                    </div>
-                    <div class="p-5">
-                        <h4 class="font-bold text-base mb-1 text-neutral-900">왼손잡이</h4>
-                        <p class="text-xs text-neutral-400">원곡자: PANIC | 자체발광 TOENZE</p>
-                    </div>
+                    <div class="relative aspect-video"><iframe class="w-full h-full" src="https://www.youtube.com/embed/62qfQJabN8g" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+                    <div class="p-5"><h4 class="font-bold text-base mb-1 text-neutral-900">왼손잡이</h4><p class="text-xs text-neutral-400">원곡자: PANIC | 자체발광 TOENZE</p></div>
                 </div>
-
                 <div class="bg-white rounded-none border border-neutral-200 overflow-hidden group hover:border-neutral-950 transition duration-200">
                     <div class="relative aspect-video bg-neutral-100">
                         <a href="https://www.youtube.com/watch?v=xnN8-9bnDfM" target="_blank" class="block w-full h-full relative overflow-hidden">
                             <img src="https://img.youtube.com/vi/xnN8-9bnDfM/maxresdefault.jpg" alt="Road Cover" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
-                            <div class="absolute inset-0 bg-neutral-950/10 flex items-center justify-center group-hover:bg-neutral-950/40 transition duration-200">
-                                <svg class="w-12 h-12 text-white opacity-80 group-hover:opacity-100 transition duration-200" fill="currentColor" viewBox="0 0 24 24">
-                                    <path d="M8 5v14l11-7z"/>
-                                </svg>
-                            </div>
-                            <span class="absolute bottom-3 right-3 bg-neutral-950 text-white text-[9px] font-bold px-2 py-0.5 tracking-wider uppercase">YouTube ↗</span>
+                            <div class="absolute inset-0 bg-neutral-950/10 flex items-center justify-center group-hover:bg-neutral-950/40 transition duration-200"><svg class="w-12 h-12 text-white opacity-80" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+                            <span class="absolute bottom-3 right-3 bg-neutral-950 text-white text-[9px] font-bold px-2 py-0.5 uppercase">YouTube ↗</span>
                         </a>
                     </div>
-                    <div class="p-5">
-                        <h4 class="font-bold text-base mb-1 text-neutral-900">길</h4>
-                        <p class="text-xs text-neutral-400">원곡자: god | 가요대축제</p>
-                    </div>
+                    <div class="p-5"><h4 class="font-bold text-base mb-1 text-neutral-900">길</h4><p class="text-xs text-neutral-400">원곡자: god | 가요대축제</p></div>
                 </div>
-
                 <div class="bg-white rounded-none border border-neutral-200 overflow-hidden group hover:border-neutral-950 transition duration-200">
                     <div class="relative aspect-video bg-neutral-100">
                         <a href="https://www.youtube.com/watch?v=8oHZYE_0Ndk" target="_blank" class="block w-full h-full relative overflow-hidden">
                             <img src="https://img.youtube.com/vi/8oHZYE_0Ndk/maxresdefault.jpg" alt="Always Cover" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
-                            <div class="absolute inset-0 bg-neutral-950/10 flex items-center justify-center group-hover:bg-neutral-950/40 transition duration-200">
-                                <svg class="w-12 h-12 text-white opacity-80 group-hover:opacity-100 transition duration-200" fill="currentColor" viewBox="0 0 24 24">
-                                    <path d="M8 5v14l11-7z"/>
-                                </svg>
-                            </div>
-                            <span class="absolute bottom-3 right-3 bg-neutral-950 text-white text-[9px] font-bold px-2 py-0.5 tracking-wider uppercase">YouTube ↗</span>
+                            <div class="absolute inset-0 bg-neutral-950/10 flex items-center justify-center group-hover:bg-neutral-950/40 transition duration-200"><svg class="w-12 h-12 text-white opacity-80" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+                            <span class="absolute bottom-3 right-3 bg-neutral-950 text-white text-[9px] font-bold px-2 py-0.5 uppercase">YouTube ↗</span>
                         </a>
                     </div>
-                    <div class="p-5">
-                        <h4 class="font-bold text-base mb-1 text-neutral-900">Always</h4>
-                        <p class="text-xs text-neutral-400">원곡자: Bon Jovi | 1995 Wembley Ver. Cover</p>
-                    </div>
+                    <div class="p-5"><h4 class="font-bold text-base mb-1 text-neutral-900">Always</h4><p class="text-xs text-neutral-400">원곡자: Bon Jovi | 1995 Wembley Ver. Cover</p></div>
                 </div>
-
             </div>
         </section>
 
         <section id="guestbook" class="max-w-2xl mx-auto bg-white border border-neutral-200 p-6 md:p-8 scroll-mt-20">
             <h3 class="font-montserrat text-base text-center uppercase tracking-widest mb-6 text-neutral-950">Guestbook</h3>
-
             <form id="commentForm" class="space-y-4 mb-8">
                 <div class="flex flex-col md:flex-row gap-3">
                     <input type="text" id="nickname" required placeholder="닉네임" class="md:w-1/2 bg-white border border-neutral-200 rounded-none px-4 py-2 text-sm focus:outline-none focus:border-neutral-950 transition text-neutral-950">
@@ -184,7 +149,6 @@
                     </div>
                 </div>
             </form>
-
             <div id="commentsList" class="space-y-3 max-h-[400px] overflow-y-auto pr-2"></div>
         </section>
     </main>
@@ -194,101 +158,104 @@
     </footer>
 
     <script>
-        // 스플래시 화면 관련 스크립트
         document.addEventListener('DOMContentLoaded', () => {
+            const commentForm = document.getElementById('commentForm');
+            const commentsList = document.getElementById('commentsList');
             const splash = document.getElementById('splash-screen');
             const splashImg = document.getElementById('splash-img');
 
-            splashImg.onload = () => {
-                splashImg.classList.remove('opacity-0', 'scale-95');
-                splashImg.classList.add('opacity-100', 'scale-100');
-            };
+            // 스플래시 애니메이션
+            if (splashImg) {
+                splashImg.onload = () => {
+                    splashImg.classList.remove('opacity-0', 'scale-95');
+                    splashImg.classList.add('opacity-100', 'scale-100');
+                };
+                if (splashImg.complete) splashImg.onload();
+            }
+            setTimeout(() => { if(splash) splash.classList.add('opacity-0'); }, 2000);
+            setTimeout(() => { if(splash) splash.remove(); }, 3000);
 
-            if (splashImg.complete) {
-                splashImg.onload();
+            // 🌟 실시간 파이어베이스 데이터베이스 연동 및 갱신 🌟
+            if (typeof database !== 'undefined' && commentsList) {
+                // 데이터베이스의 'comments' 노드가 바뀔 때마다 실시간으로 화면 갱신
+                database.ref('comments').on('value', (snapshot) => {
+                    commentsList.innerHTML = '';
+                    const data = snapshot.val();
+                    
+                    if (!data) {
+                        commentsList.innerHTML = `<p class="text-center text-neutral-400 text-xs py-8">첫 번째 메시지를 남겨보세요.</p>`;
+                        return;
+                    }
+
+                    // 객체로 온 데이터를 배열로 가공 (최신글 위로 정렬)
+                    const commentsArray = [];
+                    Object.keys(data).forEach(key => {
+                        commentsArray.push({ fbKey: key, ...data[key] });
+                    });
+                    commentsArray.sort((a, b) => b.id - a.id);
+
+                    // 화면에 그리기
+                    commentsArray.forEach(c => {
+                        const commentDiv = document.createElement('div');
+                        commentDiv.className = 'bg-white p-4 rounded-none border border-neutral-200 flex justify-between items-start gap-4';
+                        commentDiv.innerHTML = `
+                            <div class="flex-grow">
+                                <div class="flex items-center gap-2 mb-1">
+                                    <span class="font-bold text-xs text-neutral-900">${escapeHtml(c.nickname)}</span>
+                                    <span class="text-[9px] text-neutral-400">${c.date}</span>
+                                </div>
+                                <p class="text-xs text-neutral-700 whitespace-pre-wrap">${escapeHtml(c.text)}</p>
+                            </div>
+                            <button data-key="${c.fbKey}" class="delete-btn text-neutral-400 hover:text-red-500 text-[10px] p-1 transition">삭제</button>
+                        `;
+                        commentsList.appendChild(commentDiv);
+                    });
+
+                    // 삭제 버튼 클릭 이벤트 새로 연결
+                    document.querySelectorAll('.delete-btn').forEach(btn => {
+                        btn.addEventListener('click', function() {
+                            deleteComment(this.getAttribute('data-key'), data[this.getAttribute('data-key')].password);
+                        });
+                    });
+                });
             }
 
-            setTimeout(() => {
-                splash.classList.add('opacity-0');
-            }, 2000);
+            // 댓글 등록 버튼 클릭 시 서버로 전송
+            if (commentForm) {
+                commentForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    const nickname = document.getElementById('nickname').value;
+                    const password = document.getElementById('password').value;
+                    const text = document.getElementById('commentText').value;
+                    const date = new Date().toLocaleString('ko-KR', { hour12: false }).substring(0, 17);
 
-            setTimeout(() => {
-                splash.remove();
-            }, 3000);
+                    const newComment = { id: Date.now(), nickname, password, text, date };
+                    
+                    // 파이어베이스 데이터베이스에 저장
+                    database.ref('comments').push(newComment)
+                        .then(() => {
+                            commentForm.reset();
+                        })
+                        .catch(err => alert("서버 저장 실패: " + err.message));
+                });
+            }
+
+            // 서버에서 삭제 기능
+            function deleteComment(fbKey, serverPassword) {
+                const inputPassword = prompt("비밀번호를 입력하세요:");
+                if (inputPassword === serverPassword) {
+                    database.ref('comments/' + fbKey).remove()
+                        .catch(err => alert("삭제 실패: " + err.message));
+                } else if (inputPassword != null) {
+                    alert("비밀번호가 일치하지 않습니다.");
+                }
+            }
+
+            function escapeHtml(str) {
+                return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
+            }
         });
-
-        // 방명록 기능 스크립트
-        const commentForm = document.getElementById('commentForm');
-        const commentsList = document.getElementById('commentsList');
-
-        document.addEventListener('DOMContentLoaded', loadComments);
-
-        commentForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            const nickname = document.getElementById('nickname').value;
-            const password = document.getElementById('password').value;
-            const text = document.getElementById('commentText').value;
-            const date = new Date().toLocaleString('ko-KR', { hour12: false }).substring(0, 17);
-
-            const newComment = { id: Date.now(), nickname, password, text, date };
-            saveComment(newComment);
-            commentForm.reset();
-        });
-
-        // ⭕ [수정완료] fn = 변수 오타를 정상적인 function 선언문으로 완벽히 고쳤습니다!
-        function saveComment(comment) {
-            let comments = JSON.parse(localStorage.getItem('jay_comments')) || [];
-            comments.unshift(comment);
-            localStorage.setItem('jay_comments', JSON.stringify(comments));
-            renderComments();
-        }
-
-        function loadComments() { renderComments(); }
-
-        function renderComments() {
-            let comments = JSON.parse(localStorage.getItem('jay_comments')) || [];
-            commentsList.innerHTML = '';
-
-            if(comments.length === 0) {
-                commentsList.innerHTML = `<p class="text-center text-neutral-400 text-xs py-8">첫 번째 메시지를 남겨보세요.</p>`;
-                return;
-            }
-
-            comments.forEach(c => {
-                const commentDiv = document.createElement('div');
-                commentDiv.className = 'bg-white p-4 rounded-none border border-neutral-200 flex justify-between items-start gap-4';
-                commentDiv.innerHTML = `
-                    <div class="flex-grow">
-                        <div class="flex items-center gap-2 mb-1">
-                            <span class="font-bold text-xs text-neutral-900">${escapeHtml(c.nickname)}</span>
-                            <span class="text-[9px] text-neutral-400">${c.date}</span>
-                        </div>
-                        <p class="text-xs text-neutral-700 whitespace-pre-wrap">${escapeHtml(c.text)}</p>
-                    </div>
-                    <button onclick="deleteComment(${c.id})" class="text-neutral-400 hover:text-red-500 text-[10px] p-1 transition">삭제</button>
-                `;
-                commentsList.appendChild(commentDiv);
-            });
-        }
-
-        function deleteComment(id) {
-            let comments = JSON.parse(localStorage.getItem('jay_comments')) || [];
-            const target = comments.find(c => c.id === id);
-            if (!target) return;
-
-            const inputPassword = prompt("비밀번호를 입력하세요:");
-            if (inputPassword === target.password) {
-                comments = comments.filter(c => c.id !== id);
-                localStorage.setItem('jay_comments', JSON.stringify(comments));
-                renderComments();
-            } else if (inputPassword !== null) {
-                alert("비밀번호가 일치하지 않습니다.");
-            }
-        }
-
-        function escapeHtml(str) {
-            return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
-        }
     </script>
 </body>
 </html>
