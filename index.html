@@ -24,10 +24,10 @@
     <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-database-compat.js"></script>
     <script>
-        // ⭕ [수정 완료] 네 스크린샷에 있던 진짜 파이어베이스 정보로 안전하게 조립 완료!
         const firebaseConfig = {
             apiKey: "AIzaSyAsu5WtK7hLjKkmsaZ1ccrseT_a956T1O8",
             authDomain: "jay-archive.firebaseapp.com",
+            // ⚠️ 만약 계속 저장 실패가 뜨면 이 아래 주소를 내 파이어베이스 콘솔에 적힌 주소로 똑같이 고쳐야 해!
             databaseURL: "https://jay-archive-default-rtdb.firebaseio.com", 
             projectId: "jay-archive",
             storageBucket: "jay-archive.firebasestorage.app",
@@ -144,6 +144,9 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            // 🚨 [진단 1] 최신 코드가 실행되는지 확인하는 알림창
+            alert("🟢 [진단 1] 최신 방명록 코드가 정상적으로 로드되었습니다!");
+
             const commentForm = document.getElementById('commentForm');
             const commentsList = document.getElementById('commentsList');
             const splash = document.getElementById('splash-screen');
@@ -206,6 +209,9 @@
                 commentForm.addEventListener('submit', function(e) {
                     e.preventDefault();
                     
+                    // 🚨 [진단 2] 버튼 클릭이 인지되는지 확인하는 알림창
+                    alert("🔵 [진단 2] 등록 버튼 클릭 확인! 서버로 전송을 시작합니다.");
+                    
                     const nickname = document.getElementById('nickname').value;
                     const password = document.getElementById('password').value;
                     const text = document.getElementById('commentText').value;
@@ -215,9 +221,14 @@
                     
                     database.ref('comments').push(newComment)
                         .then(() => {
+                            // 🚨 [진단 3] 최종 성공 알림창
+                            alert("✨ [진단 3] 서버 저장 성공! 방명록이 등록되었습니다.");
                             commentForm.reset();
                         })
-                        .catch(err => alert("서버 저장 실패: " + err.message));
+                        .catch(err => {
+                            // 🚨 [진단 4] 실패 시 원인 출력 알림창
+                            alert("❌ [진단 4] 서버 저장 실패! 에러 이유: " + err.message);
+                        });
                 });
             }
 
